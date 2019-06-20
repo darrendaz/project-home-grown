@@ -1,4 +1,11 @@
-<h1>users/gardens index sdfdf</h1>
+<nav>
+<ul>
+  <li>
+    <%= link_to "Create Garden", new_garden_path%>
+  </li>
+</ul>
+</nav>
+<h1>gardens index sdfdf</h1>
 <%= signed_in?%>
 
 <% @gardens.each do |garden|%>
