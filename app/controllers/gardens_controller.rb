@@ -17,9 +17,11 @@ class GardensController < ApplicationController
   end
 
   def index
-    binding.pry
-    @user = current_user
-    @gardens = @user.gardens
+    if params[:user_id]
+      @gardens = current_user.gardens
+    else
+      @gardens = Garden.all
+    end
   end
 
   private
