@@ -1,2 +1,6 @@
 <h1>users/gardens index sdfdf</h1>
 <%= signed_in?%>
+
+<% @gardens.each do |garden|%>
+  <li><%= garden.name%></li>
+<% end %>
