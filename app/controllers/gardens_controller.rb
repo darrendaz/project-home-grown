@@ -12,8 +12,14 @@ class GardensController < ApplicationController
     end
   end
 
+  def show
+    @garden = Garden.find(params[:id])
+  end
+
   def index
-    @gardens = Garden.all
+    binding.pry
+    @user = current_user
+    @gardens = @user.gardens
   end
 
   private

@@ -6,8 +6,10 @@
 </ul>
 </nav>
 <h1>gardens index sdfdf</h1>
-<%= signed_in?%>
-
-<% @gardens.each do |garden|%>
-  <li><%= garden.name%></li>
-<% end %>
+<%= current_user.email%>
+<div>
+  <% @gardens.each do |garden|%>
+    
+    <%=link_to garden.name, garden_path(garden)%> <br>
+  <% end %>
+</div>
