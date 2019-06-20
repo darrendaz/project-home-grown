@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_034611) do
+ActiveRecord::Schema.define(version: 2019_06_20_180856) do
+
+  create_table "gardens", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.string "name"
+    t.string "species"
+    t.string "strain"
+    t.string "type"
+    t.string "sex"
+    t.text "notes"
+    t.integer "time_until_harvest"
+    t.datetime "date_planted"
+    t.datetime "date_harvested"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "garden_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
