@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   end
   resources :gardens
   resources :plants
+  resources :comments
+  
 
 end
