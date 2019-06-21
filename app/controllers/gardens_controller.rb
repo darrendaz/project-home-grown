@@ -13,6 +13,7 @@ class GardensController < ApplicationController
   end
 
   def show
+    binding.pry
     @garden = Garden.find(params[:id])
   end
 

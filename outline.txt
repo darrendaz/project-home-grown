@@ -1,0 +1,15 @@
+users
+- have many gardens
+- have many plants through gardens
+
+gardens
+
+
+plants
+- belong to garden
+- 
+- have many comments
+
+comments
+
+nested routes

@@ -7,11 +7,12 @@ Rails.application.routes.draw do
     resources :gardens, only: [:index, :show]
   end
   
+  resources :gardens
   resources :gardens, only: [:show] do
     resources :plants, only: [:index, :show]
   end
 
-  resources :gardens
+  # get 'gardens/new' => "gardens#new"
   resources :plants
   resources :comments
   
