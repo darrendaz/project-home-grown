@@ -18,7 +18,8 @@ class GardensController < ApplicationController
 
   def index
     if params[:user_id]
-      @gardens = current_user.gardens
+      binding.pry
+      @gardens = User.find(params[:user_id]).gardens 
     else
       @gardens = Garden.all
     end
