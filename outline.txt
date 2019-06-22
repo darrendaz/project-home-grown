@@ -1,3 +1,5 @@
+Option A
+
 users
 - has many gardens_users
 - has many gardens through gardens_users
@@ -20,17 +22,41 @@ gardens_plants
 
 
 plants
-- has many gardens
-- has many users through gardens
-- has many comments
-- has many users, through comments
+- has many gardens_plants
+- has many gardens through gardens_plants
+- has many plants_comments
+- has many comments, through plants_comments
 
 plants_comments
 - belongs to plant
 - belongs to comment
 
 comments
-- has many comments_plants
-- 
+- has many plants_comments
+- has many plants through plants_comments
+
+
+------
+Option B
+
+
+users
+- has many gardens
+- has many plants through gardens
+- has many comments through plants
+
+gardens
+- belongs to user
+- has many plants
+- has many comments through plants
+
+plants
+- belongs to garden
+- belongs to comments
+
+comments
+- contents:string
+- has many plants
+- has many gardens through plants
 
 nested routes
