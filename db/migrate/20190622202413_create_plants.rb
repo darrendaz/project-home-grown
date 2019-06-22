@@ -7,6 +7,7 @@ class CreatePlants < ActiveRecord::Migration[5.2]
       t.string :type
       t.string :sex
       t.integer :time_until_harvest
+      
       t.timestamps
     end
   end
