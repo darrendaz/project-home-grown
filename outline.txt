@@ -1,15 +1,36 @@
 users
-- have many gardens
-- have many plants through gardens
+- has many gardens_users
+- has many gardens through gardens_users
+- has many plants through gardens
+- has many comments through plants
+
+gardens_users
+- belongs to user
+- belongs to garden
 
 gardens
+- has many gardens_plants
+- has many plants, through gardens_plants
+- has many comments, through plants
+- has many users, through gardens_users
+
+gardens_plants
+- belongs to garden
+- belongs to plant
 
 
 plants
-- belong to garden
-- 
-- have many comments
+- has many gardens
+- has many users through gardens
+- has many comments
+- has many users, through comments
+
+plants_comments
+- belongs to plant
+- belongs to comment
 
 comments
+- has many comments_plants
+- 
 
 nested routes
