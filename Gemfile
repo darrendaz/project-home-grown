@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'devise'
 gem 'pry'
+gem 'omniauth-github'
 
 #-------------
 
