@@ -8,13 +8,21 @@ users
 - has many comments through plants
 
 gardens
+t.string :name
+t.datetime :start_date
+t.datetime :end_date
 - belongs to user
 - has many plants
 - has many comments through plants
 
 plants
+t.string :name
+t.string :species
+t.string :strain
+t.string :type
+t.string :sex
 - belongs to garden
-- belongs to comments
+- belongs to comment
 
 comments
 - contents:string
