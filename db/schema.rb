@@ -10,7 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_22_184328) do
+ActiveRecord::Schema.define(version: 2019_06_22_215637) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text "contents"
+    t.integer "plant_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_comments_on_plant_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "gardens", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_gardens_on_user_id"
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.string "name"
+    t.string "species"
+    t.string "strain"
+    t.string "type"
+    t.string "sex"
+    t.integer "time_until_harvest"
+    t.integer "garden_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_id"], name: "index_plants_on_garden_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false

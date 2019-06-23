@@ -3,19 +3,28 @@ Option B
 
 
 users
-- has many gardens
+- has many gardens, through users_gardens
 - has many plants through gardens
-- has many comments
-- has many plants through comments
+- has many comments, through plants
+X has many plants through comments
+
+users_gardens
+t.belongs_to users
+t.belongs_to gardens
 
 gardens
 user_id
 t.string :name
 t.datetime :start_date
 t.datetime :end_date
-- belongs to user
-- has many plants
+x belongs to user - assigns just one user id to a garden
+- has many users through users_gardens
+- has many plants, through gardens_plants
 - has many comments through plants
+
+gardens_plants
+t.belongs_to gardens
+t.belongs_to plants
 
 plants
 t.string :name
@@ -23,14 +32,15 @@ t.string :species
 t.string :strain
 t.string :type
 t.string :sex
-- belongs_to garden
+x belongs_to garden
+- has many gardens through gardens_plants
 - has many comments
 - has many users through comments
 
 comments
 plant_id
 user_id
-garden_id
+X garden_id
 - contents:string
 - belongs to plant
 - belongs to user

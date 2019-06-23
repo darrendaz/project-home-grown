@@ -1,4 +1,5 @@
 class Plant < ApplicationRecord
   belongs_to :garden
-  belongs_to :comment
+  has_many :comments
+  has_many :users, through: :comments
 end
