@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_042114) do
+ActiveRecord::Schema.define(version: 2019_06_23_063134) do
 
   create_table "comments", force: :cascade do |t|
     t.text "contents"
@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(version: 2019_06_23_042114) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "gardens_plants", force: :cascade do |t|
+  create_table "gardens_plant", force: :cascade do |t|
     t.integer "garden_id"
     t.integer "plant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["garden_id"], name: "index_gardens_plants_on_garden_id"
-    t.index ["plant_id"], name: "index_gardens_plants_on_plant_id"
+    t.index ["garden_id"], name: "index_gardens_plant_on_garden_id"
+    t.index ["plant_id"], name: "index_gardens_plant_on_plant_id"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2019_06_23_042114) do
     t.integer "time_until_harvest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_gardens", force: :cascade do |t|
+    t.integer "garden_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_id"], name: "index_user_gardens_on_garden_id"
+    t.index ["user_id"], name: "index_user_gardens_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,15 +77,6 @@ ActiveRecord::Schema.define(version: 2019_06_23_042114) do
     t.datetime "last_sign_in_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "users_gardens", force: :cascade do |t|
-    t.integer "garden_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["garden_id"], name: "index_users_gardens_on_garden_id"
-    t.index ["user_id"], name: "index_users_gardens_on_user_id"
   end
 
 end
