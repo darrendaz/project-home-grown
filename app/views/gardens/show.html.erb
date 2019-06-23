@@ -1,0 +1,10 @@
+<h1><%=@garden.name%></h1>
+<h1>Started:<%=@garden.start_date%></h1>
+<h1>Ending:<%=@garden.end_date%></h1>
+<ul>
+  <% @plants.each do |plant|%>
+    <li>
+      <%= link_to plant.name, garden_plant_path(@garden, plant)%>
+    </li>
+  <% end %>
+</ul>
