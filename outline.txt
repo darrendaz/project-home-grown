@@ -14,7 +14,6 @@ t.belongs_to users
 t.belongs_to gardens
 
 gardens
-user_id
 t.string :name
 t.datetime :start_date
 t.datetime :end_date
