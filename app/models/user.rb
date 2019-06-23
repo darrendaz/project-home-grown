@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :gardens
+  has_many :users_gardens
+  has_many :gardens, through: :users_gardens
   has_many :plants, through: :gardens
   has_many :comments, through: :plants
   # has_many :plants, through: :comments
