@@ -5,9 +5,11 @@ Option B
 users
 - has many gardens
 - has many plants through gardens
-- has many comments through plants
+- has many comments
+- has many plants through comments
 
 gardens
+user_id
 t.string :name
 t.datetime :start_date
 t.datetime :end_date
@@ -21,12 +23,16 @@ t.string :species
 t.string :strain
 t.string :type
 t.string :sex
-- belongs to garden
-- belongs to comment
+- belongs_to garden
+- has many comments
+- has many users through comments
 
 comments
+plant_id
+user_id
+garden_id
 - contents:string
-- has many plants
-- has many gardens through plants
+- belongs to plant
+- belongs to user
 
 nested routes

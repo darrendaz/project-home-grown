@@ -8,7 +8,6 @@ class CreatePlants < ActiveRecord::Migration[5.2]
       t.string :sex
       t.integer :time_until_harvest
       t.belongs_to :garden
-      t.belongs_to :comment
       t.timestamps
     end
   end
