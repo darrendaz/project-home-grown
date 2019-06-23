@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_063134) do
+ActiveRecord::Schema.define(version: 2019_06_23_073427) do
 
   create_table "comments", force: :cascade do |t|
     t.text "contents"
@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(version: 2019_06_23_063134) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "gardens_plant", force: :cascade do |t|
+  create_table "gardens_plants", force: :cascade do |t|
     t.integer "garden_id"
     t.integer "plant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["garden_id"], name: "index_gardens_plant_on_garden_id"
-    t.index ["plant_id"], name: "index_gardens_plant_on_plant_id"
+    t.index ["garden_id"], name: "index_gardens_plants_on_garden_id"
+    t.index ["plant_id"], name: "index_gardens_plants_on_plant_id"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_06_23_063134) do
     t.integer "time_until_harvest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "garden_id"
+    t.index ["garden_id"], name: "index_plants_on_garden_id"
   end
 
   create_table "user_gardens", force: :cascade do |t|
