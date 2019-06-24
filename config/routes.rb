@@ -8,11 +8,11 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
   end
 
-  resources :users, only: [:show] do
-    resources :gardens, only: [:index]
+  resources :users, only: [:index, :show] do
+    resources :gardens, only: [:index, :show, :new, :create]
   end
 
-  resources :gardens, only: [:show] do
+  resources :gardens, only: [:index, :show] do
     resources :plants, only: [:show]
   end
 

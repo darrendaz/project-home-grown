@@ -1,6 +1,6 @@
 <h1>Gardens Index Page</h1>
 <% current_user.gardens.each do |g|%>
   <li>
-    <%=link_to g.name, garden_path(g) %>
+    <%=link_to g.name, user_garden_path(current_user, g) %>
   </li>
 <% end %>
