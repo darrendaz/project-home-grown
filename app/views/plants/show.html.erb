@@ -1,9 +1,24 @@
 <h1><%=@plant.name%></h1>
+<h3>Species: <%=@plant.species%></h3>
+<h3>Strain: <%=@plant.strain%></h3>
+<h3>Type: <%=@plant.type%></h3>
+<h3>Sex: <%=@plant.sex%></h3>
+<h3>Time Until Harvest: <%=@plant.time_until_harvest%> days</h3>
 <%binding.pry%>
+
+<h2>Comments:</h2>
 <ul>
   <% @plant.comments.each do |comment|%>
     <li>
-      <small><b><%= comment.user.name%>:</b></small> <%= comment.contents%> 
+      <small><b><%= comment.user.name%>(<%= comment.created_at%>):</b></small>
+
+      <p><%= comment.contents%></p>
     </li>
   <% end %>
 </ul>
+
+<%= form_for :comments, url: plant_comments_path(@plant), method: "post" do |comment_form| %>
+  <%= comment_form.label(:contents, "Comment") %><br>
+  <%= comment_form.text_area :contents %><br>
+  <%= comment_form.submit %>
+<% end %>

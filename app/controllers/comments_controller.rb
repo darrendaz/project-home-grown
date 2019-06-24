@@ -5,11 +5,16 @@ class CommentsController < ApplicationController
   end
 
   def create
-    
+    binding.pry
+    comment = Comment.new(comment_params)
+    comment.plant_id = params[:plant_id]
+    if comment.set_user!(current_user)
+      redirect_to plant_path(comment.plant_id)
+    end
   end
 
   private
   def comment_params
-    params.require(:comment).permit(:contents, :user_id )
+    params.require(:comment).permit(:contents, :user_id, :plant_id)
   end
 end

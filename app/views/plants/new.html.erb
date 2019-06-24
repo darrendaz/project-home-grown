@@ -16,7 +16,7 @@
   <%= f.label(:sex, "Other") %><br>
   <%= f.label(:time_until_harvest, "Est. Time Til harvest (days)") %><br>
   <%= f.number_field :time_until_harvest %> <br>
-  <%= f.fields_for :comments, @plant.comments.build do |comment_form| %>
+  <%= f.fields_for :comment, @plant.comments.build do |comment_form| %>
     <%= comment_form.label(:contents, "Comment") %><br>
     <%= comment_form.text_area :contents %><br>
   <% end %>
