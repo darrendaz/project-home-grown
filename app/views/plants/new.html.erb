@@ -1,0 +1,18 @@
+<h1>New Plant Form</h1>
+<%= form_for @plant, url: garden_plants_path, method: "post"  do |f|%>
+  <%= label_tag(:name) %> <br>
+  <%= f.text_field :name %> <br>
+  <%= label_tag(:species) %> <br>
+  <%= f.text_field :species %> <br>
+  <%= label_tag(:strain) %> <br>
+  <%= f.text_field :strain %> <br>
+  <%= f.radio_button :sex, "Male" %> 
+  <%= label_tag(:sex, "Male") %><br>
+  <%= f.radio_button :sex, "Female" %> 
+  <%= label_tag(:sex, "Female") %><br>
+  <%= f.radio_button :sex, "Herm" %> 
+  <%= label_tag(:sex, "Herm") %><br>
+  <%= label_tag(:time_until_harvest) %><br>
+  <%= f.number_field :time_until_harvest %> <br>
+  <%= f.submit %>
+<% end %>
