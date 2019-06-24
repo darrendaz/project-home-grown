@@ -1,6 +1,6 @@
 <h1><%=@garden.name%></h1>
-<h1>Started:<%=@garden.start_date%></h1>
-<h1>Ending:<%=@garden.end_date%></h1>
+<h1>Start Date: <%=@garden.start_date.strftime("%m/%d/%Y")%></h1>
+<h1>End Date: <%=@garden.end_date.strftime("%m/%d/%Y")%></h1>
 <ul>
   <% @plants.each do |plant|%>
     <li>
