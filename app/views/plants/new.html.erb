@@ -1,5 +1,5 @@
 <h1>New Plant Form</h1>
-<%= form_for @plant, url: garden_plants_path, method: "post"  do |f|%>
+<%= form_for @plant, url: garden_plants_path, method: "post"  do |f| %>
   <%= f.label(:name) %> <br>
   <%= f.text_field :name %> <br>
   <%= f.label(:species) %> <br>
@@ -14,11 +14,11 @@
   <%= f.label(:sex, "Herm") %><br>
   <%= f.radio_button :sex, "Other" %> 
   <%= f.label(:sex, "Other") %><br>
-  <%= f.label(:time_until_harvest) %><br>
+  <%= f.label(:time_until_harvest, "Est. Time Til harvest (days)") %><br>
   <%= f.number_field :time_until_harvest %> <br>
-  <%= f.fields_for :comments do |comments_form|%>
-    <%= comments_form.label(:contents, "Comment") %><br>
-    <%=comments_form.text_area :contents %>
+  <%= f.fields_for :comments, @plant.comments.build do |comment_form| %>
+    <%= comment_form.label(:contents, "Comment") %><br>
+    <%= comment_form.text_area :contents %><br>
   <% end %>
   <%= f.submit %>
 <% end %>

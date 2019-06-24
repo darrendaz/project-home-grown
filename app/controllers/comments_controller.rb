@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = current_user.comments.build(contents: "BLAH" )
+    
   end
 
   private

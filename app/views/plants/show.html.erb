@@ -1,1 +1,9 @@
 <h1><%=@plant.name%></h1>
+<%binding.pry%>
+<ul>
+  <% @plant.comments.each do |comment|%>
+    <li>
+      <small><b><%= comment.user.name%>:</b></small> <%= comment.contents%> 
+    </li>
+  <% end %>
+</ul>
