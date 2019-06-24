@@ -1,18 +1,24 @@
 <h1>New Plant Form</h1>
 <%= form_for @plant, url: garden_plants_path, method: "post"  do |f|%>
-  <%= label_tag(:name) %> <br>
+  <%= f.label(:name) %> <br>
   <%= f.text_field :name %> <br>
-  <%= label_tag(:species) %> <br>
+  <%= f.label(:species) %> <br>
   <%= f.text_field :species %> <br>
-  <%= label_tag(:strain) %> <br>
+  <%= f.label(:strain) %> <br>
   <%= f.text_field :strain %> <br>
   <%= f.radio_button :sex, "Male" %> 
-  <%= label_tag(:sex, "Male") %><br>
+  <%= f.label(:sex, "Male") %><br>
   <%= f.radio_button :sex, "Female" %> 
-  <%= label_tag(:sex, "Female") %><br>
+  <%= f.label(:sex, "Female") %><br>
   <%= f.radio_button :sex, "Herm" %> 
-  <%= label_tag(:sex, "Herm") %><br>
-  <%= label_tag(:time_until_harvest) %><br>
+  <%= f.label(:sex, "Herm") %><br>
+  <%= f.radio_button :sex, "Other" %> 
+  <%= f.label(:sex, "Other") %><br>
+  <%= f.label(:time_until_harvest) %><br>
   <%= f.number_field :time_until_harvest %> <br>
+  <%= f.fields_for :comments do |comments_form|%>
+    <%= comments_form.label(:contents, "Comment") %><br>
+    <%=comments_form.text_area :contents %>
+  <% end %>
   <%= f.submit %>
 <% end %>
