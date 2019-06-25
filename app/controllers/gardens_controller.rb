@@ -14,7 +14,7 @@ class GardensController < ApplicationController
   
   def index
     if params[:user_id]
-      @gardens = User.find_by(id: params[:user_id]).gardens
+      @gardens = Garden.from_user(params[:user_id]).to_a
     else
       @gardens = Garden.all
     end

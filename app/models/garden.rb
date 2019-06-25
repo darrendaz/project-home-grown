@@ -4,5 +4,8 @@ class Garden < ApplicationRecord
   has_many :plants
   has_many :comments, through: :plants
 
-  scope :by_user_id, -> (user_id) { where(user_id: user_id) }
+  def self.from_user(user_id)
+    Garden.joins(:users).where(users: {id: user_id})
+  end
+
 end
