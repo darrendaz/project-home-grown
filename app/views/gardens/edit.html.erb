@@ -1,2 +1,4 @@
 <h1>Edit Garden</h1>
-<%= render partial: "form", locals: {garden: @garden} %>
+<%= form_for @garden, method: "patch" do |form|%>
+<%= render partial: "form", locals: {f: form} %>
+<% end %>
