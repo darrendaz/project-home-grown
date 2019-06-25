@@ -15,10 +15,8 @@ class GardensController < ApplicationController
   def index
     if params[:user_id]
       @gardens = User.find_by(id: params[:user_id]).gardens
-      binding.pry
     else
       @gardens = Garden.all
-      binding.pry
     end
   end
   
@@ -43,6 +41,7 @@ class GardensController < ApplicationController
   def destroy
     garden = Garden.find(params[:id])
     current_user.gardens.destroy(garden)
+    Garden.destroy(garden.id)
     redirect_to user_gardens_path
   end
 

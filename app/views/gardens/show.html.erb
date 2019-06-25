@@ -4,7 +4,7 @@
 
 <h3>End Date: <%=@garden.end_date.strftime("%m/%d/%Y") if @garden.end_date%></h3>
 
-<h1>Plants</h1>
+<h1>Plants <small><%= link_to 'Create Plant', new_garden_plant_path(@garden) %></small></h1>
 <ul>
   <% @plants.each do |plant|%>
     <li>
@@ -12,7 +12,7 @@
     </li>
   <% end %>
 </ul>
+
 <h2>Links:</h2>
-<p><%= link_to 'Create Plant', new_garden_plant_path(@garden) %> </p>
 <p><%= link_to 'My Gardens', user_gardens_path(current_user) %> </p>
 <p><%= link_to('Logout', destroy_user_session_path, method: :delete) %> </p>
