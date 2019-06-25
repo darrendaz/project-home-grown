@@ -1,5 +1,5 @@
 <h1>Gardens Index Page</h1>
-<%= link_to "Create New Garden", new_user_garden_path%>
+<%= link_to "Create New Garden", new_user_garden_path(current_user) %>
 <ul>
 <% @gardens.each do |g|%>
   <li>
