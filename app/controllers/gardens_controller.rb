@@ -31,12 +31,17 @@ class GardensController < ApplicationController
 
   def update
     @garden = Garden.find(params[:id])
-    binding.pry
     if @garden.update(garden_params)
       redirect_to user_garden_path(current_user, @garden)
     else
       render :edit
     end
+  end
+
+  def destroy
+    garden = Garden.find(params[:id])
+    current_user.gardens.destroy(garden)
+    redirect_to user_gardens_path
   end
 
   private

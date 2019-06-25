@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show] do
-    resources :gardens, only: [:index, :show, :new, :create]
+    resources :gardens, only: [:index, :show, :new, :create, :destroy]
   end
 
   resources :gardens, only: [:index, :show] do

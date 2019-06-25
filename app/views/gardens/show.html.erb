@@ -1,8 +1,8 @@
-<h1><%=@garden.name%> <small><%= link_to 'Edit', edit_garden_path(@garden) %></small></h1>
+<h1><%=@garden.name%> <small><%= link_to 'Edit', edit_garden_path(@garden) %>  |  <%= link_to 'Delete', user_garden_path(current_user, @garden), method: "delete" %></small></h1>
 
-<h3>Start Date: <%=@garden.start_date.strftime("%m/%d/%Y")%></h3>
+<h3>Start Date: <%=@garden.start_date.strftime("%m/%d/%Y") if @garden.start_date %></h3>
 
-<h3>End Date: <%=@garden.end_date.strftime("%m/%d/%Y")%></h3>
+<h3>End Date: <%=@garden.end_date.strftime("%m/%d/%Y") if @garden.end_date%></h3>
 
 <h1>Plants</h1>
 <ul>

@@ -1,4 +1,4 @@
 <h1>Create New Garden</h1>
-<%= form_for @garden, url: user_gardens_path, method: "post" do |form|%>
+<%= form_for @garden, url: user_gardens_path(current_user), method: "post" do |form|%>
   <%= render partial: "form", locals: {f: form}%>
 <% end %>
