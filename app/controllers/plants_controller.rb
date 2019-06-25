@@ -4,10 +4,10 @@ class PlantsController < ApplicationController
   end
 
   def create
+    @plant = Plant.new(plant_params)
+    binding.pry
     garden = Garden.find(params[:garden_id])
     plant = garden.plants.build(plant_params)
-    comment = plant.comments.last
-    comment.set_user!(current_user)
 
     if plant.save
       redirect_to garden_path(garden)
@@ -21,6 +21,6 @@ class PlantsController < ApplicationController
   private
 
   def plant_params
-    params.require(:plant).permit(:name, :species, :strain, :sex, :time_until_harvest, comments_attributes: [:contents])
+    params.require(:plant).permit(:name, :species, :strain, :sex, :time_until_harvest)
   end
 end

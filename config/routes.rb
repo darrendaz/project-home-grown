@@ -11,12 +11,13 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
     resources :gardens, only: [:index, :show, :new, :create]
-    resources :comments, only: [:index, :new, :create]
   end
 
   resources :gardens, only: [:index, :show] do
     resources :plants, only: [:index, :show, :new, :create]
   end
+
+  resources :gardens, only: [:edit, :update]
 
   resources :plants, only: [:show] do
     resources :comments, only: [:index, :new, :create]

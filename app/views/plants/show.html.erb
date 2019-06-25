@@ -4,7 +4,6 @@
 <h3>Type: <%=@plant.type%></h3>
 <h3>Sex: <%=@plant.sex%></h3>
 <h3>Time Until Harvest: <%=@plant.time_until_harvest%> days</h3>
-<%binding.pry%>
 
 <h2>Comments:</h2>
 <ul>
@@ -17,8 +16,14 @@
   <% end %>
 </ul>
 
-<%= form_for :comments, url: plant_comments_path(@plant), method: "post" do |comment_form| %>
+<%= form_for @plant.comments.build, url: plant_comments_path(@plant), method: "post" do |comment_form| %>
   <%= comment_form.label(:contents, "Comment") %><br>
   <%= comment_form.text_area :contents %><br>
   <%= comment_form.submit %>
 <% end %>
+
+<h2>Links:</h2>
+<p><%= link_to "Back to #{@plant.garden.name}", garden_path(@plant.garden) %> </p>
+<p><%= link_to 'My Gardens', user_gardens_path(current_user) %> </p>
+
+<!-- , url: plant_comments_path(@plant), method: "post" -->

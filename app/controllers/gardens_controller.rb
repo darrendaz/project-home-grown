@@ -10,7 +10,6 @@ class GardensController < ApplicationController
     else
       render :new
     end
-
   end
   
   def index
@@ -24,6 +23,20 @@ class GardensController < ApplicationController
   def show
     @garden = current_user.gardens.find(params[:id])
     @plants = @garden.plants
+  end
+
+  def edit
+    @garden = Garden.find(params[:id])
+  end
+
+  def update
+    @garden = Garden.find(params[:id])
+    binding.pry
+    if @garden.update(garden_params)
+      redirect_to user_garden_path(current_user, @garden)
+    else
+      render :edit
+    end
   end
 
   private
