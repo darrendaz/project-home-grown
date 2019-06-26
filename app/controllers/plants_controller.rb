@@ -1,13 +1,13 @@
 class PlantsController < ApplicationController
   def new
     @plant = Plant.new
+    @garden = Garden.find(params[:garden_id])
   end
 
   def create
     # @plant = Plant.new(plant_params)
-    @plant = Garden.find(params[:garden_id]).plants.build(plant_params)
-
-    binding.pry
+    @garden = Garden.find(params[:garden_id])
+    @plant = @garden.plants.build(plant_params)
     if @plant.valid?
       @plant.save
       redirect_to garden_path(@plant.garden)
