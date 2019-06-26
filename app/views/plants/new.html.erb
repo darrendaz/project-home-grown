@@ -27,7 +27,7 @@
   <%= f.label(:sex, "Other") %><br>
   <%= f.label(:time_until_harvest, "Est. Time Til harvest (days)") %><br>
   <%= f.number_field :time_until_harvest %> <br>
-  <%= f.submit %>
+  <%= f.submit %> <small><%=link_to "Cancel", :back %></small>
 <% end %>
 
 <!-- >

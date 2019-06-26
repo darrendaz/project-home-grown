@@ -11,5 +11,5 @@
         </ul>
       </div>
     <% end %>
-  <%= render partial: "form", locals: {f: form}%>
+  <%= render partial: "form", locals: {f: form}%> <small><%=link_to "Cancel", user_path(current_user) %></small>
 <% end %>

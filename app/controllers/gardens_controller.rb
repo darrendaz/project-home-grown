@@ -13,15 +13,6 @@ class GardensController < ApplicationController
       flash[:error] = "<ul>" + @garden.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
       render :new
     end
-
-    
-    # # garden = 
-    # if current_user.gardens.build(garden_params).valid?
-    # # if garden.valid?
-    #   redirect_to user_gardens_path(current_user)
-    # else
-    #   render :new
-    # end
   end
   
   def index
@@ -29,6 +20,7 @@ class GardensController < ApplicationController
       @gardens = Garden.from_user(params[:user_id]).to_a
     else
       @gardens = Garden.all
+      # add feature: show only gardens that are listed as public
     end
   end
   
@@ -49,6 +41,7 @@ class GardensController < ApplicationController
     if @garden.update(garden_params)
       redirect_to user_garden_path(current_user, @garden)
     else
+      flash[:error] = "<ul>" + @garden.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
       render :edit
     end
   end

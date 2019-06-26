@@ -1,4 +1,18 @@
 <h1>Edit Garden</h1>
+
 <%= form_for @garden, method: "patch" do |form|%>
-<%= render partial: "form", locals: {f: form} %>
+  <% if @garden.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@garden.errors.count, "error") %> prohibited this garden from being saved:</h2>
+
+      <ul>
+      <% @garden.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= render partial: "form", locals: {f: form} %> <small><%=link_to "Cancel", garden_path(@garden) %></small>
+
 <% end %>

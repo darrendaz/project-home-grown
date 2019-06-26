@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :gardens, through: :user_gardens
   has_many :plants, through: :gardens
   has_many :comments, through: :plants
+  
+  validates_associated :gardens
   # has_many :plants, through: :comments
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
