@@ -3,6 +3,8 @@ class Garden < ApplicationRecord
   has_many :users, through: :user_gardens
   has_many :plants
   has_many :comments, through: :plants
+  validates :name, presence: true
+  validates_associated :users
 
   def self.from_user(user_id)
     Garden.joins(:users).where(users: {id: user_id})

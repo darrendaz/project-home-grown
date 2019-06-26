@@ -4,12 +4,23 @@ class GardensController < ApplicationController
   end
 
   def create
-    garden = current_user.gardens.build(garden_params)
-    if garden.save
-      redirect_to user_gardens_path(current_user)
+    @garden = Garden.new(garden_params)
+    
+    if @garden.valid?
+      @garden.users << current_user
+      redirect_to user_garden_path(current_user, @garden) if @garden.save
     else
+      flash[:error] = "<ul>" + @garden.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
       render :new
     end
+
+    # # garden = 
+    # if current_user.gardens.build(garden_params).valid?
+    # # if garden.valid?
+    #   redirect_to user_gardens_path(current_user)
+    # else
+    #   render :new
+    # end
   end
   
   def index
@@ -21,8 +32,12 @@ class GardensController < ApplicationController
   end
   
   def show
-    @garden = current_user.gardens.find(params[:id])
-    @plants = @garden.plants
+    if params[:user_id] == current_user.id
+      @garden = User.find(params[:user_id]).gardens.find(params[:id])
+      @plants = @garden.plants
+    else
+      @garden = Garden.find(params[:id])
+    end
   end
 
   def edit

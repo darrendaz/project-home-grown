@@ -4,6 +4,8 @@ class Comment < ApplicationRecord
   # has_many :plants
   # has_many :gardens, through: :plants
 
+  validates :contents, presence: true
+
   def set_user!(user)
     self.user_id = user.id
 
