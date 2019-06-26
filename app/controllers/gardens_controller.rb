@@ -14,6 +14,7 @@ class GardensController < ApplicationController
       render :new
     end
 
+    
     # # garden = 
     # if current_user.gardens.build(garden_params).valid?
     # # if garden.valid?
@@ -34,7 +35,6 @@ class GardensController < ApplicationController
   def show
     if params[:user_id] == current_user.id
       @garden = User.find(params[:user_id]).gardens.find(params[:id])
-      @plants = @garden.plants
     else
       @garden = Garden.find(params[:id])
     end

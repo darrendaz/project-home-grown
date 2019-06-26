@@ -4,6 +4,7 @@ class Garden < ApplicationRecord
   has_many :plants
   has_many :comments, through: :plants
   validates :name, presence: true
+  validates :start_date, presence: true
   validates_associated :users
 
   def self.from_user(user_id)

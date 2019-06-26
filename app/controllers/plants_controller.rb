@@ -4,14 +4,18 @@ class PlantsController < ApplicationController
   end
 
   def create
-    @plant = Plant.new(plant_params)
-    binding.pry
-    garden = Garden.find(params[:garden_id])
-    plant = garden.plants.build(plant_params)
+    # @plant = Plant.new(plant_params)
+    @plant = Garden.find(params[:garden_id]).plants.build(plant_params)
 
-    if plant.save
-      redirect_to garden_path(garden)
+    binding.pry
+    if @plant.valid?
+      @plant.save
+      redirect_to garden_path(@plant.garden)
+    else
+      flash[:error] = "<ul>" + @plant.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
+      render :new
     end
+
   end
   
   def show

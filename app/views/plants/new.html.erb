@@ -1,5 +1,16 @@
 <h1>New Plant Form</h1>
 <%= form_for @plant, url: garden_plants_path, method: "post"   do |f| %>
+  <% if @plant.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
+
+        <ul>
+        <% @plant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+  <% end %>
   <%= f.label(:name) %> <br>
   <%= f.text_field :name %> <br>
   <%= f.label(:species) %> <br>

@@ -6,9 +6,9 @@
 
 <h1>Plants <small><%= link_to 'Create Plant', new_garden_plant_path(@garden) %></small></h1>
 
-<% if !@plants.nil?%>
+<% if !@garden.plants.nil?%>
   <ul>
-    <% @plants.each do |plant|%>
+    <% @garden.plants.each do |plant|%>
       <li>
         <%= link_to plant.name, garden_plant_path(@garden, plant)%>
       </li>
