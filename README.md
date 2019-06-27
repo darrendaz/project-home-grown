@@ -12,12 +12,6 @@ In terminal, do a `bundle install` command to install dependencies.
 $ bundle install
 ```
 
-Then `rake db:migrate` command
-
-```
-$ rake db:migrate
-```
-
 start up the app with `rails s` command
 
 ```
@@ -29,6 +23,10 @@ Open http://localhost:3000 in your browser.
 ```
 http://localhost:3000
 ```
+
+Sign up and login with email and password or sign in with omniauth through GitHub.
+
+Enjoy! 🙂
 
 ## Built With
 
