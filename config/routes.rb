@@ -1,3 +1,20 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root "application#index"
+  
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', gardens: 'users/gardens' }
+  
+  resources :users, only: [:show] do
+    resources :gardens, only: [:index, :show]
+  end
+  
+  resources :gardens
+  resources :gardens, only: [:show] do
+    resources :plants, only: [:index, :show]
+  end
+
+  # get 'gardens/new' => "gardens#new"
+  resources :plants
+  resources :comments
+  
+
 end

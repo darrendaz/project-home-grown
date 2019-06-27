@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,11 +15,13 @@
       <ul>
         <li><%=link_to 'Sign in',  new_user_session_path%></li>
         <li><%=link_to 'Sign up',  new_user_registration_path%></li>
+        <li><%=link_to 'gardens',  user_gardens_path%></li>
         <li><%=link_to 'Logout',  destroy_user_session_path, method: :delete%></li>
       </ul>
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <h1>GARDENS</h1>
     <%= yield %>
   </body>
 </html>

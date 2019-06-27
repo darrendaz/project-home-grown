@@ -1,0 +1,15 @@
+<nav>
+<ul>
+  <li>
+    <%= link_to "Create Garden", gardens_new_path%>
+  </li>
+</ul>
+</nav>
+<h1>ALL gardens index</h1>
+<%= current_user.email%>
+<div>
+  <% @gardens.each do |garden|%>
+    
+    <%=link_to garden.name, garden_path(garden)%> <br>
+  <% end %>
+</div>
