@@ -5,11 +5,15 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.new(comment_params)
-    comment.plant_id = params[:plant_id]
-    binding.pry
-    if comment.set_user!(current_user)
-      redirect_to plant_path(comment.plant_id)
+    @plant = Plant.find_by(id: params[:plant_id])
+    @comment = @plant.comments.build(comment_params)
+    @comment.user = current_user
+    if @comment.valid?
+      @comment.set_user!(current_user)
+      redirect_to plant_path(@comment.plant_id)
+    else
+      flash[:error] = "<ul>" + @plant.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
+      redirect_to garden_plant_path(@plant.garden, @plant)
     end
   end
 

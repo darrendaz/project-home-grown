@@ -17,6 +17,16 @@
 </ul>
 
 <%= form_for @plant.comments.build, url: plant_comments_path(@plant), method: "post" do |comment_form| %>
+  <% if @plant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@plant.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+      <% @plant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= comment_form.label(:contents, "Comment") %><br>
   <%= comment_form.text_area :contents %><br>
   <%= comment_form.submit %>
