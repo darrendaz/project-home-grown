@@ -1,24 +1,56 @@
-# README
+# rails-agro-project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple garden and plant tracking web application with RESTful routes.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+Clone the repository down to your local environment using `git clone <repo>`
 
-* System dependencies
+In terminal, do a `bundle install` command to install dependencies.
 
-* Configuration
+```
+$ bundle install
+```
 
-* Database creation
+Then `rake db:migrate` command
 
-* Database initialization
+```
+$ rake db:migrate
+```
 
-* How to run the test suite
+start up the app with `rails s` command
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ rails s
+```
 
-* Deployment instructions
+Open http://localhost:3000 in your browser.
 
-* ...
+```
+http://localhost:3000
+```
+
+## Built With
+
+- [Ruby on Rails](https://guides.rubyonrails.org/)
+- [ActiveRecord](https://guides.rubyonrails.org/active_record_basics.html)
+- [devise](https://github.com/plataformatec/devise)
+
+## Contributing
+
+Please read [CONTRIBUTING.md] for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Authors
+
+- **DARRENDAZ** - _Initial work_ - [DARRENDAZ]https://github.com/darrendaz/
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+- A huge THANK YOU! to Flatiron School and instructors for the lessons and labs to make this possible.
+- Happy Hacking! 😄
