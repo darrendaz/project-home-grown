@@ -9,7 +9,8 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.valid?
       @comment.set_user!(current_user)
-      redirect_to plant_path(@comment.plant_id)
+      render "plants/show"
+      # redirect_to plant_path(@plant)
     else
       flash[:error] = "<ul>" + @comment.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
       render "plants/show"

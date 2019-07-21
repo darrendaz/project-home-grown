@@ -9,23 +9,25 @@
 <ul>
   <% @plant.comments.each do |comment|%>
     <li>
-      <small><b><%= comment.user.name%>(<%= comment.created_at%>):</b></small>
+      <small><b><%= comment.user.name%> <%= comment.created_at%>: </b><%= comment.contents%></small>
 
-      <p><%= comment.contents%></p>
+      <p></p>
     </li>
   <% end %>
 </ul>
 
 <%= form_for @plant.comments.build, url: plant_comments_path(@plant), method: "post" do |comment_form| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-      <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+  <% if @comment%>
+    <% if @comment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+        <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
   <%= comment_form.label(:contents, "Comment") %><br>
   <%= comment_form.text_area :contents %><br>
@@ -35,5 +37,3 @@
 <h2>Links:</h2>
 <p><%= link_to "Back to #{@plant.garden.name}", garden_path(@plant.garden) %> </p>
 <p><%= link_to 'My Gardens', user_gardens_path(current_user) %> </p>
-
-<!-- , url: plant_comments_path(@plant), method: "post" -->
