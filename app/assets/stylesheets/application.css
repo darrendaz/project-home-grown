@@ -24,12 +24,12 @@ body {
 a {
   text-decoration-line: none;
   color: darkslategray;
+  padding: 0 0.5em;
 }
 
 a:hover {
   font-weight: bold;
   background-color: rgb(120, 253, 180);
-  padding: 0 0.5em;
   border-radius: 20px;
 }
 
@@ -41,4 +41,15 @@ ul {
 small a {
   font-weight: normal;
   font-size: smaller;
+}
+
+button {
+  padding: 0.5em 1em;
+  border-radius: 2px;
+  border: none;
+  background-color: forestgreen;
+}
+
+button:hover {
+  background-color: rgb(21, 114, 21);
 }
