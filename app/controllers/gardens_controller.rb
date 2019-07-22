@@ -25,7 +25,7 @@ class GardensController < ApplicationController
     
     if @garden.valid?
       @garden.users << current_user
-      redirect_to user_garden_path(current_user, @garden) if @garden.save
+      # redirect_to user_garden_path(current_user, @garden) if @garden.save
       respond_to do |f|
         f.html {redirect_to @garden, notice: 'Garden was successfully created.'}
         f.json {render json: @garden}
@@ -35,7 +35,6 @@ class GardensController < ApplicationController
       render :new
     end
   end
-  
   
   def show
     if params[:user_id] == current_user.id
