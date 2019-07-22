@@ -7,6 +7,7 @@ gem 'devise'
 gem 'pry'
 gem 'omniauth-github'
 gem 'active_model_serializers'
+gem 'jquery-rails'
 
 #-------------
 
