@@ -1,3 +1,3 @@
 class GardenSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :start_date, :end_date
 end
