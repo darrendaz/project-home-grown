@@ -1,4 +1,21 @@
 class GardensController < ApplicationController
+  def index
+    if params[:user_id]
+      @gardens = Garden.from_user(params[:user_id]).to_a
+      respond_to do |f|
+        f.html {render :index}
+        f.json {render json: @gardens}
+      end
+    else
+      @gardens = Garden.all
+      respond_to do |f|
+        f.html {render :index}
+        f.json {render json: @gardens}
+      end
+      # add feature: show only gardens that are listed as public
+    end
+  end
+
   def new
     @garden = Garden.new
   end
@@ -9,20 +26,16 @@ class GardensController < ApplicationController
     if @garden.valid?
       @garden.users << current_user
       redirect_to user_garden_path(current_user, @garden) if @garden.save
+      respond_to do |f|
+        f.html {redirect_to @garden, notice: 'Garden was successfully created.'}
+        f.json {render json: @garden}
+      end
     else
       flash[:error] = "<ul>" + @garden.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
       render :new
     end
   end
   
-  def index
-    if params[:user_id]
-      @gardens = Garden.from_user(params[:user_id]).to_a
-    else
-      @gardens = Garden.all
-      # add feature: show only gardens that are listed as public
-    end
-  end
   
   def show
     if params[:user_id] == current_user.id

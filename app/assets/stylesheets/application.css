@@ -28,6 +28,9 @@ a {
 
 a:hover {
   font-weight: bold;
+  background-color: rgb(120, 253, 180);
+  padding: 0 0.5em;
+  border-radius: 20px;
 }
 
 ul {
