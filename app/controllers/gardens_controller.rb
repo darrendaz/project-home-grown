@@ -63,7 +63,11 @@ class GardensController < ApplicationController
     garden = Garden.find(params[:id])
     current_user.gardens.destroy(garden)
     Garden.destroy(garden.id)
-    redirect_to user_gardens_path
+    respond_to do |f|
+      f.html {redirect_to user_gardens_path}
+      f.json {head :no_content}
+    end
+    # redirect_to user_gardens_path
   end
 
   private
