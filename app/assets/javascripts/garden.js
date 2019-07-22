@@ -17,9 +17,11 @@ function getGarden() {
     dataType: 'json'
   }).done(function (data) {
     console.log("garden data:", data)
-    let firstGarden = new Garden(data[0]);
-    let myGardenHTML = firstGarden.gardenHTML()
-    document.getElementById("new-gardens").innerHTML += myGardenHTML;
+    for (let item of data) {
+      let firstGarden = new Garden(item);
+      let myGardenHTML = firstGarden.gardenHTML()
+      document.getElementById("new-gardens").innerHTML += myGardenHTML;
+    }
   })
 }
 
@@ -36,8 +38,8 @@ Garden.prototype.gardenHTML = function () {
   return (`
     <div>
       <h3>Name: ${this.name}</h3>
-      <p>Started: ${this.start_date}</p>
-      <p>Ending: ${this.end_date}</p>
+      <p>Start date: ${this.start_date}</p>
+      <p>End date: ${this.end_date}</p>
     </div>
   `)
 }
