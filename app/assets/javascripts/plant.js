@@ -12,8 +12,8 @@ function getPlant() {
   }).done(function (data) {
     console.log("plant data:", data)
     let plant = new Plant(data);
-    if (document.getElementById("new-plant")) {
-      document.getElementById("new-plant").innerHTML += plant.plantHTML();
+    if (document.getElementById("plant")) {
+      document.getElementById("plant").innerHTML += plant.plantHTML();
     }
   })
 }
