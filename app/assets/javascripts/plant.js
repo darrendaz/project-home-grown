@@ -4,18 +4,20 @@ $(function () {
 })
 
 function getPlant() {
-  const plant_id = $("#plant").data("id")
-  $.ajax({
-    url: 'http://localhost:3000/plants/' + plant_id,
-    method: 'get',
-    dataType: 'json',
-  }).done(function (data) {
-    console.log("plant data:", data)
-    let plant = new Plant(data);
-    if (document.getElementById("plant")) {
-      document.getElementById("plant").innerHTML += plant.plantHTML();
-    }
-  })
+  if ($("#plant").data("id")) {
+    const plant_id = $("#plant").data("id")
+    $.ajax({
+      url: 'http://localhost:3000/plants/' + plant_id,
+      method: 'get',
+      dataType: 'json',
+    }).done(function (data) {
+      console.log("plant data:", data)
+      let plant = new Plant(data);
+      if (document.getElementById("plant")) {
+        document.getElementById("plant").innerHTML += plant.plantHTML();
+      }
+    })
+  }
 }
 
 class Plant {
@@ -27,7 +29,7 @@ class Plant {
     this.type = object.type
     this.sex = object.sex
     this.time_until_harvest = object.time_until_harvest
-    this.garden_id = object.garden_id
+    this.comments = object.comments
   }
 }
 
