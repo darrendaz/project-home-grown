@@ -1,19 +1,17 @@
-<h1><%=@plant.name%></h1>
-<h3>Species: <%=@plant.species%></h3>
-<h3>Strain: <%=@plant.strain%></h3>
-<h3>Type: <%=@plant.type%></h3>
-<h3>Sex: <%=@plant.sex%></h3>
-<h3>Time Until Harvest: <%=@plant.time_until_harvest%> days</h3>
-
-<div id="new-plant"></div>
+<div id="plant" data-id="<%= @plant.id%>">
+  <h1><%=@plant.name%></h1>
+  <h3>Species: <%=@plant.species%></h3>
+  <h3>Strain: <%=@plant.strain%></h3>
+  <h3>Type: <%=@plant.type%></h3>
+  <h3>Sex: <%=@plant.sex%></h3>
+  <h3>Time Until Harvest: <%=@plant.time_until_harvest%> days</h3>
+</div>
 
 <h2>Comments:</h2>
 <ul>
   <% @plant.comments.each do |comment|%>
     <li>
       <small><b><%= comment.user.name%> <%= comment.created_at%>: </b><%= comment.contents%></small>
-
-      <p></p>
     </li>
   <% end %>
 </ul>

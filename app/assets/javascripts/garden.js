@@ -13,7 +13,9 @@ function getGarden() {
     for (let item of data) {
       let firstGarden = new Garden(item);
       let myGardenHTML = firstGarden.gardenHTML()
-      document.getElementById("new-gardens").innerHTML += myGardenHTML;
+      if (document.getElementById("new-gardens")) {
+        document.getElementById("new-gardens").innerHTML += myGardenHTML;
+      }
     }
   })
 }

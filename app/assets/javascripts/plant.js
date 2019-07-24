@@ -4,14 +4,17 @@ $(function () {
 })
 
 function getPlant() {
+  const plant_id = $("#plant").data("id")
   $.ajax({
-    url: 'http://localhost:3000/plants/1',
+    url: 'http://localhost:3000/plants/' + plant_id,
     method: 'get',
     dataType: 'json',
   }).done(function (data) {
     console.log("plant data:", data)
     let plant = new Plant(data);
-    document.getElementById("new-plant").innerHTML += plant.plantHTML();
+    if (document.getElementById("new-plant")) {
+      document.getElementById("new-plant").innerHTML += plant.plantHTML();
+    }
   })
 }
 
