@@ -21,7 +21,7 @@ class PlantsController < ApplicationController
     @plant = Plant.find_by(id: params[:id])
     respond_to do |f|
       f.html {render :show}
-      f.json {render json: @plant}
+      f.json {render json: @plant.to_json}
     end
   end
 
