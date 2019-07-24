@@ -5,10 +5,21 @@ $(function () {
 })
   ;
 const bindClickHandlers = () => {
-  $('#new_comment').on("submit", function (e) {
-    e.preventDefault()
-    console.log($(this).serialize())
-  })
+  if ($("#plant").data("id")) {
+    const plant_id = $("#plant").data("id")
+
+    $('#new_comment').on("submit", function (e) {
+      e.preventDefault()
+      const values = $(this).serialize()
+
+      $.post(plant_id + '/comments', values)
+        .done(function (data) {
+          $('#display-comments').html("")
+
+          const newPlantCommentsHTML = new Comment(data)
+        })
+    })
+  }
 }
 
 function getPlant() {
@@ -60,10 +71,10 @@ Plant.prototype.plantHTML = function () {
       <p>Sex: ${this.sex}</p>
       <p>Time Until Harvest: ${this.time_until_harvest}</p>
       <div id="plant-comments">
-      <h3>Comments:</h3>
-        <ul>
-          ${plantCommentsHTML}
-        </ul>
+        <h3>Comments:</h3>
+          <ul id="display-comments">
+            ${plantCommentsHTML}
+          </ul>
       <div>
     </div>
   `)
