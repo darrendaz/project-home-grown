@@ -1,14 +1,5 @@
 <div id="plant" data-id="<%= @plant.id%>"></div>
 
-<h2>Comments:</h2>
-<ul>
-  <% @plant.comments.each do |comment|%>
-    <li>
-      <small><b><%= comment.user.name%> <%= comment.created_at%>: </b><%= comment.contents%></small>
-    </li>
-  <% end %>
-</ul>
-
 <%= form_for @plant.comments.build, url: plant_comments_path(@plant), method: "post" do |comment_form| %>
   <% if @comment%>
     <% if @comment.errors.any? %>
