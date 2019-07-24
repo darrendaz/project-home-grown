@@ -24,8 +24,9 @@ body {
   background-attachment: fixed;
   background-image: radial-gradient(
     circle at top left,
-    rgb(69, 254, 143),
     rgb(36, 235, 189),
+    rgb(69, 254, 189),
+    rgb(69, 254, 143),
     rgb(0, 199, 90)
   );
 }

@@ -25,5 +25,5 @@ Comment.create(plant_id: 1, user_id: 1, contents: "Switched to flowering light s
 Comment.create(plant_id: 2, user_id: 1, contents: "It's working!")
 Comment.create(plant_id: 2, user_id: 1, contents: "There can only be one")
 Comment.create(plant_id: 2, user_id: 1, contents: "Believe in the force, you must")
-Comment.create(plant_id: 2, user_id: 1, contents: "You break 100% of the code you don't write")
+Comment.create(plant_id: 2, user_id: 1, contents: "You forget 100% of the code you don't write")
 Comment.create(plant_id: 2, user_id: 1, contents: "I'm a little tea pot...")

@@ -5,7 +5,6 @@ class PlantsController < ApplicationController
   end
 
   def create
-    # @plant = Plant.new(plant_params)
     @garden = Garden.find(params[:garden_id])
     @plant = @garden.plants.build(plant_params)
     if @plant.valid?
@@ -20,6 +19,20 @@ class PlantsController < ApplicationController
   
   def show
     @plant = Plant.find_by(id: params[:id])
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @plant}
+    end
+  end
+
+  def destroy
+    @plant = Plant.find_by(id: params[:id])
+    @plant.destroy
+    respond_to do |f|
+      f.html {redirect_to plants_url}
+      f.json {head :no_content}
+    end
+
   end
 
   private

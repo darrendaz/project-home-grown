@@ -11,9 +11,8 @@ function getGarden() {
   }).done(function (data) {
     console.log("garden data:", data)
     for (let item of data) {
-      let firstGarden = new Garden(item);
-      let myGardenHTML = firstGarden.gardenHTML()
-      document.getElementById("new-gardens").innerHTML += myGardenHTML;
+      let garden = new Garden(item);
+      document.getElementById("new-gardens").innerHTML += garden.gardenHTML();
     }
   })
 }
