@@ -87,3 +87,8 @@ input[type="submit"]:hover {
   background-color: white;
   box-shadow: 2px 2px 2px rgba(51, 53, 15, 0.5);
 }
+
+.garden-data-container h1 {
+  margin: 0;
+  padding: 0;
+}

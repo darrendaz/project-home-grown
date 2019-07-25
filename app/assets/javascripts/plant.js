@@ -45,8 +45,7 @@ Plant.prototype.plantHTML = function () {
   }).join('')
   return (`
     <div id="plant-data">
-      <h2>I'm rendering a plant: ${this.name}</h2>
-      <p>Name: ${this.name}</p>
+      <h2>Plant name: ${this.name}</h2>
       <p>Species: ${this.species}</p>
       <p>Strain: ${this.strain}</p>
       <p>Type: ${this.type}</p>

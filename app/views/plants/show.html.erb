@@ -21,3 +21,4 @@
 <h2>Links:</h2>
 <p><%= link_to "Back to #{@plant.garden.name}", garden_path(@plant.garden) %> </p>
 <p><%= link_to 'My Gardens', user_gardens_path(current_user) %> </p>
+<p><%= link_to('Logout', destroy_user_session_path, method: :delete) %> </p>
