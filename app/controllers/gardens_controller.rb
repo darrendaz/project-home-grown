@@ -22,13 +22,14 @@ class GardensController < ApplicationController
 
   def create
     @garden = Garden.new(garden_params)
-    
+    binding.pry
     if @garden.valid?
       @garden.users << current_user
-      # redirect_to user_garden_path(current_user, @garden) if @garden.save
-      respond_to do |f|
-        f.html {redirect_to @garden, notice: 'Garden was successfully created.'}
-        f.json {render json: @garden}
+      if @garden.save
+        respond_to do |f|
+          f.html {redirect_to @garden, notice: 'Garden was successfully created.'}
+          f.json {render json: @garden}
+        end
       end
     else
       flash[:error] = "<ul>" + @garden.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
