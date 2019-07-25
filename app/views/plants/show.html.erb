@@ -15,7 +15,7 @@
   <% end %>
   <%= comment_form.label(:contents, "Comment") %><br>
   <%= comment_form.text_area :contents %><br>
-  <%= comment_form.submit %>
+  <%= comment_form.submit data: { disable_with: false }%>
 <% end %>
 
 <h2>Links:</h2>

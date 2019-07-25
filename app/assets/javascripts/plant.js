@@ -1,26 +1,8 @@
 $(function () {
   console.log("Plant is working")
   getPlant()
-  bindClickHandlers()
 })
   ;
-const bindClickHandlers = () => {
-  if ($("#plant").data("id")) {
-    const plant_id = $("#plant").data("id")
-
-    $('#new_comment').on("submit", function (e) {
-      e.preventDefault()
-      const values = $(this).serialize()
-
-      $.post(plant_id + '/comments', values)
-        .done(function (data) {
-          $('#display-comments').html("")
-
-          const newPlantCommentsHTML = new Comment(data)
-        })
-    })
-  }
-}
 
 function getPlant() {
   if ($("#plant").data("id")) {
