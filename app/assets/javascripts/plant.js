@@ -1,7 +1,6 @@
 $(function () {
   getPlant()
 })
-  ;
 
 function getPlant() {
   if ($("#plant").data("id")) {
@@ -10,13 +9,15 @@ function getPlant() {
       url: 'http://localhost:3000/plants/' + plant_id,
       method: 'get',
       dataType: 'json',
-    }).done(function (data) {
-      let plant = new Plant(data);
-      const element = document.getElementById("plant")
-      if (element) {
-        element.innerHTML += plant.plantHTML();
-      }
-    })
+    }).done(data => plantRequestCallback(data))
+  }
+}
+
+function plantRequestCallback(data) {
+  const element = document.getElementById("plant")
+  let plant = new Plant(data)
+  if (element) {
+    element.innerHTML += plant.plantHTML();
   }
 }
 

@@ -15,7 +15,7 @@ const bindClickHandlers = () => {
 
         const newComment = new Comment(data)
         let plantCommentsHTML = newComment.plant.comments.map(comment => {
-          let timeStamp = new Date(Date.parse(comment.created_at))
+          const timeStamp = new Date(Date.parse(comment.created_at))
           return (`
               <li>
                 <small><b>${timeStamp}</b>: ${comment.contents}</small>
