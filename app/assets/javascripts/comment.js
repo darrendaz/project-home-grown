@@ -10,24 +10,30 @@ const bindClickHandlers = () => {
       e.preventDefault()
       const values = $(this).serialize()
 
-      $.post(plant_id + '/comments', values).done(function (data) {
-        $('#display-comments').html("")
+      $.post(plant_id + '/comments', values).done(data => displayCommentsCallback(data))
 
+      $('#new_comment')[0].reset()
+
+      function displayCommentsCallback(data) {
+        $('#display-comments').html("")
+        const element = document.getElementById("display-comments")
         const newComment = new Comment(data)
+
         let plantCommentsHTML = newComment.plant.comments.map(comment => {
           const timeStamp = new Date(Date.parse(comment.created_at))
+
           return (`
-              <li>
-                <small><b>${timeStamp}</b>: ${comment.contents}</small>
-              </li>
-            `)
+            <li>
+              <small><b>${timeStamp}</b>: ${comment.contents}</small>
+            </li>
+          `)
         }).join('')
-        if (document.getElementById("display-comments")) {
-          document.getElementById("display-comments").innerHTML += plantCommentsHTML
-        }
-      })
-      $('#new_comment')[0].reset()
+
+        element.innerHTML += plantCommentsHTML
+      }
     })
+
+
   }
 }
 
