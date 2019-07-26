@@ -30,7 +30,7 @@ Navigate to 'http://localhost:3000/login' in your browser.
 
 Create a user by signing up either with email and password or omniauth through your GitHub account.
 
-IMPORTANT: YOU MUST DO THIS BEFORE SEEDING OTHERWISE THE DUMMY DATA WON'T SEED AND YOU WILL GET AN ERROR!
+IMPORTANT: YOU MUST SIGN UP BEFORE SEEDING OTHERWISE THE DUMMY DATA WON'T SEED AND YOU WILL GET AN ERROR!
 
 Once you've signed up, you can seed the dummy data with 'rake db:seed' command.
 
