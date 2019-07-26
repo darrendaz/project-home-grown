@@ -2,6 +2,8 @@
 
 A simple garden and plant tracking web application with RESTful routes.
 
+UPDATE [07/25/2019]: Now using Rails + JavaScript to render Gardens Index, Plants, and Comments
+
 ## Getting Started
 
 Clone the repository down to your local environment using `git clone <repo>`
@@ -33,6 +35,7 @@ Enjoy! 🙂
 - [Ruby on Rails](https://guides.rubyonrails.org/)
 - [ActiveRecord](https://guides.rubyonrails.org/active_record_basics.html)
 - [devise](https://github.com/plataformatec/devise)
+- [jQuery](https://api.jquery.com/)
 
 ## Contributing
 
