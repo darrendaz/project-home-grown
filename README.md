@@ -14,19 +14,31 @@ In terminal, do a `bundle install` command to install dependencies.
 $ bundle install
 ```
 
-start up the app with `rails s` command
+Create the database using 'rake db:migrate' command.
+
+```
+$ rake db:migrate
+```
+
+Start up the app with `rails s` command
 
 ```
 $ rails s
 ```
 
-Open http://localhost:3000 in your browser.
+Navigate to 'http://localhost:3000/login' in your browser.
+
+Create a user by signing up either with email and password or omniauth through your GitHub account.
+
+IMPORTANT: YOU MUST DO THIS BEFORE SEEDING OTHERWISE THE DUMMY DATA WON'T SEED AND YOU WILL GET AN ERROR!
+
+Once you've signed up, you can seed the dummy data with 'rake db:seed' command.
 
 ```
-http://localhost:3000
+$ rake db:seed
 ```
 
-Sign up and login with email and password or sign in with omniauth through GitHub.
+Seed data should now be displaying when you navigate to 'http://localhost:3000/user/1/gardens' in your browser.
 
 Enjoy! 🙂
 
