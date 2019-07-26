@@ -22,7 +22,6 @@ class GardensController < ApplicationController
 
   def create
     @garden = Garden.new(garden_params)
-    binding.pry
     if @garden.valid?
       @garden.users << current_user
       if @garden.save

@@ -4,20 +4,40 @@ $(function () {
 })
 
 function getGarden() {
-  $.ajax({
-    url: 'http://localhost:3000/gardens',
-    method: 'get',
-    dataType: 'json',
-  }).done(function (data) {
-    console.log("garden data:", data)
-    for (let item of data) {
-      let firstGarden = new Garden(item);
-      let myGardenHTML = firstGarden.gardenHTML()
-      if (document.getElementById("new-gardens")) {
-        document.getElementById("new-gardens").innerHTML += myGardenHTML;
+  const base_url = 'http://localhost:3000/gardens/'
+  if ($("#gardens").data("id")) {
+    const user_id = $("#gardens").data("id")
+    const user_url = 'http://localhost:3000/users/' + user_id + '/gardens'
+    let request_url = (user_id) ? user_url : base_url
+    $.ajax({
+      url: request_url,
+      method: 'get',
+      dataType: 'json',
+    }).done(function (data) {
+      for (let item of data) {
+        let firstGarden = new Garden(item);
+        let myGardenHTML = firstGarden.gardenHTML()
+        if (document.getElementById("gardens")) {
+          document.getElementById("gardens").innerHTML += myGardenHTML;
+        }
       }
-    }
-  })
+    })
+  } else {
+    $.ajax({
+      url: base_url,
+      method: 'get',
+      dataType: 'json',
+    }).done(function (data) {
+      for (let item of data) {
+        let firstGarden = new Garden(item);
+        let myGardenHTML = firstGarden.gardenHTML()
+        let element = document.getElementById("gardens")
+        if (element) {
+          element.innerHTML += myGardenHTML;
+        }
+      }
+    })
+  }
 }
 
 class Garden {
