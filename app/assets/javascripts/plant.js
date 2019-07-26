@@ -1,5 +1,4 @@
 $(function () {
-  console.log("Plant is working")
   getPlant()
 })
   ;

@@ -1,5 +1,4 @@
 $(function () {
-  console.log("Comment JS is working")
   bindClickHandlers()
 })
 

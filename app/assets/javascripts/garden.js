@@ -1,5 +1,4 @@
 $(function () {
-  console.log("JS is working")
   getGarden()
 })
 
@@ -33,7 +32,7 @@ function getGarden() {
         let myGardenHTML = firstGarden.gardenHTML()
         let element = document.getElementById("gardens")
         if (element) {
-          element.innerHTML += myGardenHTML;
+          document.getElementById("gardens").innerHTML += myGardenHTML;
         }
       }
     })
