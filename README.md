@@ -26,19 +26,19 @@ Start up the app with `rails s` command
 $ rails s
 ```
 
-Navigate to 'http://localhost:3000/login' in your browser.
+Navigate to http://localhost:3000/login in your browser.
 
 Create a user by signing up either with email and password or omniauth through your GitHub account.
 
 IMPORTANT: YOU MUST SIGN UP BEFORE SEEDING OTHERWISE THE DUMMY DATA WON'T SEED AND YOU WILL GET AN ERROR!
 
-Once you've signed up, you can seed the dummy data with 'rake db:seed' command.
+Once you've signed up, you can seed the dummy data with `rake db:seed` command.
 
 ```
 $ rake db:seed
 ```
 
-Seed data should now be displaying when you navigate to 'http://localhost:3000/user/1/gardens' in your browser.
+Seed data should now be displaying when you navigate to http://localhost:3000/user/1/gardens in your browser.
 
 Enjoy! 🙂
 
