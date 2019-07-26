@@ -11,10 +11,10 @@ function getPlant() {
       method: 'get',
       dataType: 'json',
     }).done(function (data) {
-      console.log("plant data:", data)
       let plant = new Plant(data);
-      if (document.getElementById("plant")) {
-        document.getElementById("plant").innerHTML += plant.plantHTML();
+      const element = document.getElementById("plant")
+      if (element) {
+        element.innerHTML += plant.plantHTML();
       }
     })
   }
