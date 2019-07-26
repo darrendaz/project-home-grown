@@ -8,32 +8,33 @@ const bindClickHandlers = () => {
 
     $('#new_comment').submit(function (e) {
       e.preventDefault()
-      const values = $(this).serialize()
+      if (this.comment_contents.value !== "") {
+        const values = $(this).serialize()
+        $.post(plant_id + '/comments', values).done(data => displayCommentsCallback(data))
 
-      $.post(plant_id + '/comments', values).done(data => displayCommentsCallback(data))
+        $('#new_comment')[0].reset()
 
-      $('#new_comment')[0].reset()
+        function displayCommentsCallback(data) {
+          $('#display-comments').html("")
+          const element = document.getElementById("display-comments")
+          const newComment = new Comment(data)
 
-      function displayCommentsCallback(data) {
-        $('#display-comments').html("")
-        const element = document.getElementById("display-comments")
-        const newComment = new Comment(data)
+          let plantCommentsHTML = newComment.plant.comments.map(comment => {
+            const timeStamp = new Date(Date.parse(comment.created_at))
 
-        let plantCommentsHTML = newComment.plant.comments.map(comment => {
-          const timeStamp = new Date(Date.parse(comment.created_at))
+            return (`
+              <li>
+                <small><b>${timeStamp}</b>: ${comment.contents}</small>
+              </li>
+            `)
+          }).join('')
 
-          return (`
-            <li>
-              <small><b>${timeStamp}</b>: ${comment.contents}</small>
-            </li>
-          `)
-        }).join('')
-
-        element.innerHTML += plantCommentsHTML
+          element.innerHTML += plantCommentsHTML
+        }
+      } else {
+        alert("Please type something in before hitting Create Comment")
       }
     })
-
-
   }
 }
 
