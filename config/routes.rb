@@ -20,10 +20,13 @@ Rails.application.routes.draw do
   end
 
   resources :gardens, only: [:edit, :update]
-
+  
+  
   resources :plants, only: [:show] do
     resources :comments, only: [:index, :new, :create]
   end
-
+  
+  get 'api/gardens', to: 'api#gardens'
+  get 'api/plants', to: 'api#plants'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
