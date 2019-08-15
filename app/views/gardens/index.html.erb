@@ -1,9 +1,11 @@
-<h1>Gardens Index Page <small class="crud-action"><%= link_to "Create New Garden", new_user_garden_path(current_user) %></small></h1>
+<h1>Gardens Index Page <small class="crud-action"><%=link_to "Create New Garden", new_user_garden_path(current_user) unless !current_user %></small></h1>
+
+
 
 <div id="gardens" data-id="<%= params[:user_id]%>"></div>
 
 <h2>Links:</h2>
-<p><%= link_to('My Gardens', user_gardens_path(current_user))%> </p>
-<p><%= link_to('All Gardens', gardens_path)%>  </p>
-<p><%= link_to('Logout', destroy_user_session_path, method: :delete) %> </p>
+<p><%= link_to('My Gardens', user_gardens_path(current_user)) unless !current_user%> </p>
+<p><%= link_to('All Gardens', gardens_path) unless !current_user%>  </p>
+<p><%= link_to('Logout', destroy_user_session_path, method: :delete) unless !current_user%> </p>
 

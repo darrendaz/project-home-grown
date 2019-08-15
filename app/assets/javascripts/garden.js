@@ -1,5 +1,6 @@
 $(function () {
   getGarden()
+  bindClickHandlers()
 })
 
 function getGarden() {
