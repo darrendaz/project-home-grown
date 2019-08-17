@@ -8,6 +8,8 @@ gem 'pry'
 gem 'omniauth-github'
 gem 'active_model_serializers'
 gem 'jquery-rails'
+gem 'faker'
+gem 'rack-cors'
 
 #-------------
 
