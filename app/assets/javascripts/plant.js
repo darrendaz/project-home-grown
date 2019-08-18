@@ -6,7 +6,7 @@ function getPlant() {
   if ($("#plant").data("id")) {
     const plant_id = $("#plant").data("id")
     $.ajax({
-      url: 'http://localhost:3000/plants/' + plant_id,
+      url: 'http://localhost:4000/plants/' + plant_id,
       method: 'get',
       dataType: 'json',
     }).done(data => plantRequestCallback(data))

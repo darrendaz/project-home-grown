@@ -4,11 +4,11 @@ $(function () {
 })
 
 function getGarden() {
-  const base_url = 'http://localhost:3000/gardens/'
+  const base_url = 'http://localhost:4000/gardens/'
 
   if ($("#gardens").data("id")) {
     const user_id = $("#gardens").data("id")
-    const user_url = 'http://localhost:3000/users/' + user_id + '/gardens'
+    const user_url = 'http://localhost:4000/users/' + user_id + '/gardens'
 
     $.ajax({
       url: user_url,
